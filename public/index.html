@@ -234,4 +234,11 @@ input{flex:1;min-width:0;padding:14px;border-radius:14px;border:1.5px solid var(
   (async function init(){
     var q=(new URLSearchParams(location.search).get('c')||'').toUpperCase();
     var saved=lsGet('ttt_code');
-    if(/^[A-Z0-9]{4}$/.test(q)
+    if(/^[A-Z0-9]{4}$/.test(q)){ $('#codeIn').value=q; await join(q); }
+    else if(saved){ if(!(await join(saved))){ lsDel('ttt_code'); msg(''); } }
+  })();
+})();
+</script>
+</body>
+</html>
+
